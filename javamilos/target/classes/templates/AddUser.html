@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" class="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" class="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <input type="submit" value="Add User">
+</form>
+<form action="#"
+      th:action="@{/update/{id}(id=${user.id})}"
+      th:object="${user}"
+      method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <input type="submit" value="Update User">
+</form>
+<div th:switch="${users}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup">Add a new user</a></p>
+</div>
+
+</body>
+</html>

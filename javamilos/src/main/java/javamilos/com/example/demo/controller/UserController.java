@@ -32,7 +32,6 @@ public class UserController {
         if (result.hasErrors()) {
             return "add-user";
         }
-
         userRepository.save(user);
         model.addAttribute("users", userRepository.findAll());
         return "redirect:/index";
@@ -51,7 +50,6 @@ public class UserController {
             user.setId(id);
             return "update-user";
         }
-
         userRepository.save(user);
         model.addAttribute("users", userRepository.findAll());
         return "redirect:/index";
@@ -64,4 +62,11 @@ public class UserController {
         model.addAttribute("users", userRepository.findAll());
         return "index";
     }
+
+    @GetMapping("/index")
+    public String allUsers(Model model){
+        model.addAttribute("users", userRepository.findAll());
+                return "index";
+    }
+
 }

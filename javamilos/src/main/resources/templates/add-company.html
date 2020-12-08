@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add User</title>
+    <title>Add Company</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -13,10 +13,10 @@
 </head>
 <body>
 <div class="container my-5">
-    <h2 class="mb-3">New User</h2>
+    <h2 class="mb-3">New Company</h2>
     <div class="row">
         <div class="col-md-6">
-            <form action="#" method="post" th:action="@{/adduser}" th:object="${user}">
+            <form action="#" method="post" th:action="@{/addcompany}" th:object="${company}">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name" class="col-form-label">Name</label>
@@ -29,36 +29,14 @@
                         <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="age" class="col-form-label">Age</label>
-                        <input type="text" th:field="*{age}" class="form-control" id="age" placeholder="Age">
-                        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="text-danger"></span>
+                        <label for="employees" class="col-form-label">Employees</label>
+                        <input type="text" th:field="*{employees}" class="form-control" id="employees" placeholder="Employed">
+                        <span th:if="${#fields.hasErrors('employees')}" th:errors="*{employees}" class="text-danger"></span>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="email" class="col-form-label">Email</label>
-                        <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="email@example.com">
-                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-                    </div>
-
-                    <!--Below is dropdown menu-->
-
-                    <!--<div class="btn-group open">-->
-                        <!--<a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> User</a>-->
-                        <!--<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">-->
-                            <!--<span class="fa fa-caret-down" title="Toggle dropdown menu"></span>-->
-                        <!--</a>-->
-                        <!--<ul class="dropdown-menu">-->
-                            <!--<li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>-->
-                            <!--<li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>-->
-                            <!--<li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>-->
-                            <!--<li class="divider"></li>-->
-                            <!--<li><a href="#"><i class="fa fa-unlock"></i> Make admin</a></li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-4">
-                        <input type="submit" class="btn btn-primary" value="Add User">
+                        <input type="submit" class="btn btn-primary" value="Add Company">
                     </div>
                 </div>
             </form>

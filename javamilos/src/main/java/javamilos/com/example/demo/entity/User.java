@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+
 
 @Entity
 public class User {
@@ -12,18 +14,41 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @NotBlank(message = "Name is mandatory")
     private String name;
 
+    @Email(message = "Invalid email address!")
     @NotBlank(message = "Email is mandatory")
     private String email;
 
+    private String address;
+
+    private int age;
+
     public User() {}
 
-    public User(String name, String email) {
+    public User(String name, String email, String address, int age) {
         this.name = name;
         this.email = email;
+        this.age=age;
+        this.address = address;
+    }
 
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setId(long id) {
@@ -54,4 +79,6 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
     }
+
+
 }

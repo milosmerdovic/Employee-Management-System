@@ -1,2 +1,2 @@
 # Spring Boot Sample Code 
-This repository contains working code samples which demonstrate Rest services.
+This repository contains working code samples which demonstrate restful services.

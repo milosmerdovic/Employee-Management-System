@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en-us">
+<html xmlns:th="http://thymeleaf.org" lang="en-us" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Add User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>
 <body>
 <div class="container my-5">
-    <h2 class="mb-5">New User</h2>
+    <h2 class="mb-3">New User</h2>
     <div class="row">
         <div class="col-md-6">
-            <form action="#" method="post" th:action="@{/adduser}" th:object="${user}">
+            <form action="#" method="post" th:action="@{/add-user}" th:object="${user}">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name" class="col-form-label">Name</label>
@@ -21,15 +24,26 @@
                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
+                        <label for="address" class="col-form-label">Address</label>
+                        <input type="text" th:field="*{address}" class="form-control" id="address" placeholder="Address">
+                        <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="age" class="col-form-label">Age</label>
+                        <input type="text" th:field="*{age}" class="form-control" id="age" placeholder="Age">
+                        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="email" class="col-form-label">Email</label>
-                        <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+                        <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="email@example.com">
                         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
                     </div>
-                </div>
+
                 <div class="row">
-                    <div class="col-md-6 mt-5">
+                    <div class="col-md-6 mt-4">
                         <input type="submit" class="btn btn-primary" value="Add User">
                     </div>
+                </div>
                 </div>
             </form>
         </div>

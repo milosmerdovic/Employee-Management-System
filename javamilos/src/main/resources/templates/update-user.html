@@ -21,10 +21,34 @@
                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
+                        <label for="age" class="col-form-label">Age</label>
+                        <input type="text" th:field="*{age}" class="form-control" id="age" placeholder="Age">
+                        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="address" class="col-form-label">Address</label>
+                        <input type="text" th:field="*{address}" class="form-control" id="address" placeholder="Address">
+                        <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="email" class="col-form-label">Email</label>
                         <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
                         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
                     </div>
+                    <!-- <div class="form-group col-md-6">
+                        <label for="company" class="col-form-label">Company</label>
+                        <div class="dropdown ">
+                            <button class="btn btn-primary dropdown-toggle col-md-6" type="button" id="company" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Company
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Apple</a>
+                                <a class="dropdown-item" href="#">Microsoft</a>
+                                <a class="dropdown-item" href="#">IBM</a>
+                            </div>
+                        </div>
+                        <span th:if="${#fields.hasErrors('company')}" th:errors="*{company}" class="text-danger"></span>
+                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-5">

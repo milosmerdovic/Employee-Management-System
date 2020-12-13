@@ -20,23 +20,27 @@ public class CompanyController {
     public CompanyController(CompanyRepository companyRepository) {
          this.companyRepository= companyRepository;
     }
+    @GetMapping("/company")
+    public String showCompanyForm(Company company) {
+        return "company";
+    }
 
     @GetMapping("/create")
     public String showSignUpForm(Company company) {
         return "add-company";
     }
 
-    @PostMapping("/addcompany")
+    @PostMapping("/add-company")
     public String addCompany(@Valid Company company, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-company";
+            return "/company/index";
         }
         companyRepository.save(company);
         model.addAttribute("companies", companyRepository.findAll());
-        return "redirect:/index";
+        return "redirect:/company/index";
     }
 
-    @GetMapping("/edit-company/{id}")
+    @GetMapping(value = {"/company","/edit-company/{id}"})
     public String showEditForm(@PathVariable("id") long id, Model model) {
         Company company = companyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid company Id:" + id));
         model.addAttribute("company", company);
@@ -51,20 +55,20 @@ public class CompanyController {
         }
         companyRepository.save(company);
         model.addAttribute("companies", companyRepository.findAll());
-        return "redirect:/index-companies";
+        return "redirect:/company/index";
     }
 
-    @GetMapping("/delete-company/{id}")
+    @GetMapping(value = {"/company","/delete-company/{id}"})
     public String deleteCompany(@PathVariable("id") long id, Model model) {
         Company company = companyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid company Id:" + id));
         companyRepository.delete(company);
         model.addAttribute("companies", companyRepository.findAll());
-        return "index";
+        return "/company/index";
     }
 
-    @GetMapping("/index-companies")
+    @GetMapping(value = {"/company","/index"})
     public String allCompanies(Model model){
         model.addAttribute("companies", companyRepository.findAll());
-        return "index-companies";
+        return "/company/index";
     }
 }

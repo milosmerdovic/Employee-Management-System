@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import javax.validation.Valid;
 
 @Controller
@@ -51,7 +50,7 @@ public class CompanyController {
     public String updateCompany(@PathVariable("id") long id, @Valid Company company, BindingResult result, Model model) {
         if (result.hasErrors()) {
             company.setId(id);
-            return "/main/resources/templates/companies/update-company.html";
+            return "company/update-company";
         }
         companyRepository.save(company);
         model.addAttribute("companies", companyRepository.findAll());

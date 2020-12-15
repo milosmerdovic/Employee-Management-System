@@ -71,7 +71,7 @@ public class UserController {
     @GetMapping("/user/index")
     public String allUsers(Model model){
         model.addAttribute("users", userRepository.findAll());
-                return "user/index";
+        return "user/index";
     }
 
 }

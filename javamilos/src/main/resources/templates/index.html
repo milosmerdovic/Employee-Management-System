@@ -24,7 +24,6 @@
                         <th>Email</th>
                         <th>Age</th>
                         <th>Address</th>
-                        <th>Company</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -35,7 +34,6 @@
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.age}"></td>
                         <td th:text="${user.address}"></td>
-                        <!--<td th:text="${user.company.name}"></td>-->
 
                         <td><a th:href="@{/user/edit/{id}(id=${user.id})}" class="btn btn-primary"><i
                                 class="fas fa-user-edit ml-2"></i></a></td>

@@ -21,15 +21,15 @@ public class CompanyController {
     }
     @GetMapping("/company")
     public String showCompanyForm(Company company) {
-        return "company/company";
+        return "/company/company";
     }
 
     @GetMapping("/create")
-    public String showSignUpForm(Company company) {
-        return "company/add-company";
+    public String addCompanyPage(Company company) {
+        return "/company/add-company";
     }
 
-    @PostMapping("/add-company")
+    @PostMapping("/company/add-company")
     public String addCompany(@Valid Company company, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-company";

@@ -1,85 +1,81 @@
 package javamilos.com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
+@Table(name =  "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Long id;
 
-    @NotBlank(message = "Name is mandatory")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Email(message = "Invalid email address!")
-    @NotBlank(message = "Email is mandatory")
+    @Column(name = "last_name")
+    private String lastName;
+
     private String email;
 
-    private String address;
+    private String password;
 
-    private int age;
-//    private String  companyName;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+
+    private Collection<Role> roles;
 
     public User() {}
 
-    public User(String name, String email, String address, int age) {
-        this.name = name;
+    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.age=age;
-        this.address = address;
+        this.password = password;
+        this.roles = roles;
     }
-
-    public void setAddress(String address){
-        this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getFirstName() {
+        return firstName;
     }
-
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
     public String getEmail() {
         return email;
     }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
+    public void setEmail(String email) {
+        this.email = email;
     }
-
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
 
 }

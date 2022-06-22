@@ -1,7 +1,7 @@
 # Employee Menagement System
 This project contains working code which demonstrate restful services.
 
-##This project implements the following features:
+## This project implements the following features:
 
 - List Employee Feature
 
@@ -21,7 +21,7 @@ This project contains working code which demonstrate restful services.
 
 - Logout Feature
 
-##Tools and technologies used:
+## Tools and technologies used:
 
 Java 8+
 Spring Boot

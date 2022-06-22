@@ -1,7 +1,7 @@
 # Employee Menagement System
 This project contains working code which demonstrate restful services.
 
-## This project implements the following features:
+### This project implements the following features:
 
 - List Employee Feature
 
@@ -21,13 +21,17 @@ This project contains working code which demonstrate restful services.
 
 - Logout Feature
 
-## Tools and technologies used:
+### Tools and technologies used:
 
-Java 8+
-Spring Boot
-Spring Data JPA ( Hibernate)
-Spring Security
-MySQL
-Maven
-Tomcat
-Thymeleaf
+- Java 8+
+- Spring Boot
+- Spring Data JPA ( Hibernate)
+- Spring Security
+- MySQL
+- Maven
+- Tomcat
+- Thymeleaf
+
+Go to the root directory of the application and type the following command to run it:
+
+mvn sppring-boot:run

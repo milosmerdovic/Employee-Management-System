@@ -19,33 +19,36 @@ public class EmployeeController {
     public String showHomePage(){
         return "index";
     }
-    @GetMapping("/showEmpForm")
-    public String getEmployeeCreationPage(Model model){
+    @GetMapping("/backToEmployee")
+    public String goBack(){
+        return "redirect:/employees_page";
+    }
+    @GetMapping("/showEmployeePage")
+    public String listAllEmployees(Model model){
+        model.addAttribute("listEmployees", employeeService.getAllEmployees());
+        return "/employees_page";
+    }
+    @GetMapping("/addNewEmployee")
+    public String addEmployees(Model model){
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
-        return "new_employee";
+        return "/add_employee";
     }
-    @PostMapping("saveEmployee")
+    @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
         employeeService.saveEmployee(employee);
-        return "redirect:/";
+        return "redirect:/employees_page";
     }
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
-
-        // get employee from the service
         Employee employee = employeeService.getEmployeeById(id);
-
-        // set employee as a model attribute to pre-populate the form
         model.addAttribute("employee", employee);
         return "update_employee";
     }
 
     @GetMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable (value = "id") long id) {
-
-        // call delete employee method
+    public String deleteEmployee(@PathVariable(value = "id") long id) {
         this.employeeService.deleteEmployeeById(id);
-        return "redirect:/";
+        return "redirect:/employees_page";
     }
 }

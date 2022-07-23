@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,19 +25,10 @@ public class UserController {
         model.addAttribute("users", userRepository.findAll());
         return "user/user";
     }
-    @GetMapping("/user/add-user")
-    public String addUser(){
-        return "user/add-user";
-    }
-
     @PostMapping("/create")
-    public String createUser(@Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "add-user";
-        }
+    public String createUser(@ModelAttribute("user") User user) {
         userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
-        return "/user/index";
+        return "redirect:/user/index";
     }
 
     @GetMapping("/user/edit/{id}")

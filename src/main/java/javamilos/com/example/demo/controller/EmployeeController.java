@@ -23,6 +23,7 @@ public class EmployeeController {
     public String goBack(){
         return "redirect:/employees_page";
     }
+
     @GetMapping("/showEmployeePage")
     public String listAllEmployees(Model model){
         model.addAttribute("listEmployees", employeeService.getAllEmployees());
@@ -37,7 +38,7 @@ public class EmployeeController {
     @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
         employeeService.saveEmployee(employee);
-        return "redirect:/employees_page";
+        return "redirect:/showEmployeePage";
     }
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
@@ -49,6 +50,6 @@ public class EmployeeController {
     @GetMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable(value = "id") long id) {
         this.employeeService.deleteEmployeeById(id);
-        return "redirect:/employees_page";
+        return "redirect:/showEmployeePage";
     }
 }

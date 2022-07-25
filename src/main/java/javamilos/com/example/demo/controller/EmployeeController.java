@@ -21,7 +21,7 @@ public class EmployeeController {
     }
     @GetMapping("/backToEmployee")
     public String goBack(){
-        return "redirect:/employees_page";
+        return "redirect:/showEmployeePage";
     }
 
     @GetMapping("/showEmployeePage")

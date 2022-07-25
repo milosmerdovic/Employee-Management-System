@@ -1,14 +1,14 @@
 package javamilos.com.example.demo.dto;
 
-public class UserDto {
+public class StudentDto {
 
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    public UserDto(){}
-    public UserDto(String firstName, String lastName, String email, String password) {
+    public StudentDto(){}
+    public StudentDto(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

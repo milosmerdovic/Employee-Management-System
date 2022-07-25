@@ -1,7 +1,7 @@
 package javamilos.com.example.demo.controller;
 
-import javamilos.com.example.demo.dto.UserDto;
-import javamilos.com.example.demo.service.UserService;
+import javamilos.com.example.demo.dto.StudentDto;
+import javamilos.com.example.demo.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class RegistrationController {
 
-    private UserService userService;
+    private final StudentService studentService;
 
-    public RegistrationController(UserService userService) {
+    public RegistrationController(StudentService studentService) {
         super();
-        this.userService = userService;
+        this.studentService = studentService;
     }
 
-    @ModelAttribute("user")
-    public UserDto userRegistrationDto() {
-        return new UserDto();
+    @ModelAttribute("student")
+    public StudentDto userRegistrationDto() {
+        return new StudentDto();
     }
 
     @GetMapping
@@ -30,8 +30,8 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") UserDto registrationDto) {
-        userService.saveUser(registrationDto);
+    public String registerUserAccount(@ModelAttribute("user") StudentDto registrationDto) {
+        studentService.saveStudent(registrationDto);
         return "redirect:/registration?success";
     }
 

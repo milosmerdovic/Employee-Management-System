@@ -28,21 +28,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="company : ${companies}">
-                        <td th:text="${company.name}"></td>
-                        <td th:text="${company.address}"></td>
-                        <td th:text="${company.employees}"></td>
+                    <tr th:each="school : ${companies}">
+                        <td th:text="${school.name}"></td>
+                        <td th:text="${school.address}"></td>
+                        <td th:text="${school.employees}"></td>
 
-                        <td><a th:href="@{/company/edit-company/{id}(id=${company.id})}" class="btn btn-primary"><i
-                                class="fas fa-user-edit ml-2"></i></a></td>
-                        <td><a th:href="@{/company/delete-company/{id}(id=${company.id})}" class="btn btn-primary"><i
-                                class="fas fa-user-times ml-2"></i></a></td>
+                        <td><a th:href="@{/school/edit-school/{id}(id=${school.id})}" class="btn btn-primary"><i
+                                class="fas fa-student-edit ml-2"></i></a></td>
+                        <td><a th:href="@{/school/delete-school/{id}(id=${school.id})}" class="btn btn-primary"><i
+                                class="fas fa-student-times ml-2"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <h2>Add Companies</h2>
-            <p class="my-5"><a href="/add-company" class="btn btn-primary"><i class="fas fa-add"></i></a></p>
+            <p class="my-5"><a href="/add-school" class="btn btn-primary"><i class="fas fa-add"></i></a></p>
             <h2>Add Companies</h2>
             <p class="my-5"><a href="/index" class="btn btn-primary"><i class="fas fa-home"></i></a></p>
         </div>

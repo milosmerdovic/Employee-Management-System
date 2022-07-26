@@ -1,9 +1,13 @@
 package javamilos.com.example.demo.service;
 
-import javamilos.com.example.demo.dto.StudentDto;
 import javamilos.com.example.demo.entity.Student;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.util.List;
 
 public interface StudentService {
-    Student saveStudent(StudentDto studentDto);
+    List<Student> findAllStudents();
+    void saveStudent(Student student);
+    Student findStudentById(long id);
+    void deleteStudent(Student student);
+
 }

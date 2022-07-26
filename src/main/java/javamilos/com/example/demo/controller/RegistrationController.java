@@ -29,10 +29,10 @@ public class RegistrationController {
         return "registration";
     }
 
-    @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") StudentDto registrationDto) {
-        studentService.saveStudent(registrationDto);
-        return "redirect:/registration?success";
-    }
+//    @PostMapping
+//    public String registerUserAccount(@ModelAttribute("user") StudentDto registrationDto) {
+//        studentService.saveStudent(registration);
+//        return "redirect:/registration?success";
+//    }
 
 }
